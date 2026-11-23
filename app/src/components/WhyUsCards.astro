@@ -1,0 +1,40 @@
+---
+const { locale } = Astro.props;
+
+const cards = [
+  {
+    title: { en: 'Established in 2015', zh: '成立于2015年' },
+    body: { en: 'Nearly a decade of experience in electromechanical equipment supply.', zh: '近十年的机电设备供应经验。' },
+  },
+  {
+    title: { en: 'Central Enterprise Supplier', zh: '央企合格供应商' },
+    body: { en: 'Qualified supplier for CCCC, China Energy Engineering and China Railway International.', zh: '中交集团、中能建、中铁国际等知名央企的合格供应商。' },
+  },
+  {
+    title: { en: 'Import & Export Capability', zh: '进出口贸易资质' },
+    body: { en: 'Domestic procurement and import-export trade of high-end electromechanical equipment.', zh: '高端机电设备的国内采购及进出口贸易。' },
+  },
+  {
+    title: { en: 'Quality Philosophy', zh: '品质理念' },
+    body: { en: 'Quality changes everything, service achieves the future.', zh: '品质改变一切，服务成就未来。' },
+  },
+];
+---
+
+<section class="why-us" aria-labelledby="whyus-heading">
+  <div class="container">
+    <div class="section-title">
+      <h2 id="whyus-heading">{locale === 'zh' ? '为什么选择我们' : 'Why Choose Us'}</h2>
+      <p>{locale === 'zh' ? '创远优势' : 'What sets us apart'}</p>
+    </div>
+
+    <div class="grid-4">
+      {cards.map((card) => (
+        <article class="card">
+          <h3>{card.title[locale]}</h3>
+          <p>{card.body[locale]}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

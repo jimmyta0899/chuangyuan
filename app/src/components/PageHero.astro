@@ -1,0 +1,44 @@
+---
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+}
+
+const { eyebrow, title, lead } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero-title">{title}</h1>
+    {lead ? <p class="page-hero-lead">{lead}</p> : null}
+  </div>
+</section>
+
+<style>
+  :global(.page-hero) {
+    background: #111111;
+    color: #ffffff;
+    padding: 64px 0 56px;
+  }
+
+
+  :global(.page-hero-title) {
+    font-size: 2.5rem;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: #ffffff;
+  }
+
+  :global(.page-hero-lead) {
+    font-size: var(--font-size-lg, 1.125rem);
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 60ch;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    :global(.page-hero) { padding: 44px 0 36px; }
+    :global(.page-hero-title) { font-size: 1.75rem; }
+  }
+</style>

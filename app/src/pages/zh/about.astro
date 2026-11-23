@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const locale = 'zh';
+
+const facts = [
+  { label: '公司名称', value: '广州创远机电设备有限公司' },
+  { label: '成立时间', value: '2015 年' },
+  { label: '公司地址', value: '广州市海珠区赤岗北路8号瑞福大厦304、305室' },
+  { label: '业务范围', value: '高端机电设备、阀门、仪表、通讯终端设备、电子自动化产品的国内采购及进出口贸易' },
+  { label: '项目经验', value: '参与多个国内外大型工程项目' },
+  { label: '客户资质', value: '中交集团、中能建、中铁国际等知名央企的合格供应商' },
+];
+
+const credentials = ['质量服务诚信单位', '企业资信等级 AAA 证书', '重质量守信用单位'];
+---
+
+<Layout
+  title="关于我们"
+  description="广州创远机电设备有限公司成立于2015年，为国内外工程项目提供高端机电设备、阀门、仪表与通讯终端设备的采购及进出口贸易服务。"
+  locale={locale}
+  path="about"
+>
+  <PageHero
+    title="以采购纪律为基础的机电设备供应商"
+    lead="创远为国内外工程项目采购与供应高端机电设备、阀门、仪表、通讯终端设备与电子自动化产品。"
+  />
+
+  <section class="section">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <h2>我们是谁</h2>
+        <p>
+          广州创远机电设备有限公司成立于 2015 年，是一家专业的高品质机电设备供应商，承接国内采购以及进出口贸易业务，为需要按既定规格采购设备的买家提供服务。
+        </p>
+        <p>
+          我们的业务覆盖高端机电设备、阀门、仪表、通讯终端设备与电子自动化产品。公司参与过多个国内外大型工程项目，是中交集团、中能建、中铁国际等知名央企的合格供应商。
+        </p>
+
+        <h2>我们的坚持</h2>
+        <p>
+          公司的经营理念是「品质改变一切，服务成就未来」。落实在具体操作上，就是把每一笔订单对应到明确的品牌与型号、确认项目所需的资料文件，并与买方的技术团队保持直接沟通。
+        </p>
+        <ul class="credential-list">
+          {credentials.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+
+      <aside class="about-facts" aria-labelledby="facts-heading">
+        <h2 id="facts-heading">公司概况</h2>
+        <dl>
+          {facts.map((f) => (
+            <div class="fact-row">
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>报价前需要先确认型号规格？</h2>
+        <p>把型号、数量与交货地点发给我们，我们会回复可选品牌与交货周期。</p>
+      </div>
+      <a href="/zh/contact/" class="btn btn-light">联系我们</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  :global(.about-grid) {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  :global(.about-copy h2) {
+    font-size: 1.5rem;
+    margin: 0 0 12px;
+    color: var(--color-text-dark);
+  }
+
+  :global(.about-copy h2:not(:first-child)) {
+    margin-top: 32px;
+  }
+
+  :global(.about-copy p) {
+    color: #4a4a4a;
+    line-height: 1.9;
+    margin-bottom: 12px;
+  }
+
+  :global(.credential-list) {
+    margin: 16px 0 0;
+    padding-left: 20px;
+    color: #4a4a4a;
+    line-height: 2;
+  }
+
+  :global(.about-facts) {
+    background: #f5f5f5;
+    border: 1px solid rgba(17, 17, 17, 0.07);
+    border-radius: 0;
+    padding: 28px;
+  }
+
+  :global(.about-facts h2) {
+    font-size: 1.125rem;
+    margin: 0 0 16px;
+  }
+
+  :global(.fact-row) {
+    padding: 12px 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.07);
+  }
+
+  :global(.fact-row:first-of-type) {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  :global(.fact-row dt) {
+    font-size: 0.75rem;
+    color: #666666;
+    margin-bottom: 4px;
+  }
+
+  :global(.fact-row dd) {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--color-text-dark);
+    line-height: 1.75;
+  }
+
+  :global(.cta-band) {
+    background: #161616;
+    color: #ffffff;
+    padding: 40px 0;
+  }
+
+  :global(.cta-inner) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  :global(.cta-inner h2) {
+    font-size: 1.375rem;
+    margin: 0 0 6px;
+  }
+
+  :global(.cta-inner p) {
+    margin: 0;
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 900px) {
+    :global(.about-grid) { grid-template-columns: 1fr; gap: 32px; }
+    :global(.cta-inner) { flex-direction: column; align-items: flex-start; }
+  }
+</style>

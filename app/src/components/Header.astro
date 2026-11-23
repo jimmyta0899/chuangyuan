@@ -1,0 +1,184 @@
+---
+import LangSwitch from '../components/LangSwitch.astro';
+
+const locale = Astro.props.locale || 'en';
+const labels = {
+  nav: {
+    home: locale === 'zh' ? '首页' : 'Home',
+    about: locale === 'zh' ? '关于我们' : 'About',
+    brands: locale === 'zh' ? '代理品牌' : 'Brands',
+    contact: locale === 'zh' ? '联系我们' : 'Contact',
+  },
+  cta: { contact: locale === 'zh' ? '联系我们' : 'Contact Us' },
+  brands: { title: locale === 'zh' ? '代理品牌' : 'Agent Brands', subtitle: locale === 'zh' ? '我们代理的全球品牌' : 'The global brands we represent' },
+  whyus: { title: locale === 'zh' ? '为什么选择我们' : 'Why Choose Us', subtitle: locale === 'zh' ? '创远优势' : 'What sets us apart' },
+  trust: { title: locale === 'zh' ? '信任数据' : 'Trust' },
+  wall: { title: locale === 'zh' ? '品牌墙' : 'Brand Wall' },
+  contact: { title: locale === 'zh' ? '联系信息' : 'Contact', subtitle: locale === 'zh' ? '与我们联系' : 'Get in touch' },
+  footer: { contact: locale === 'zh' ? '联系方式' : 'Contact', nav: locale === 'zh' ? '导航' : 'Navigation' },
+};
+---
+
+<header class="header" aria-label="Banner">
+  <div class="container header-inner">
+    <a href={`/${locale}/`} class="header-logo" aria-label={locale === 'zh' ? '创远 首页' : 'CHUANG YUAN homepage'}>
+      <img
+        src="/images/logo-nubb-cutout.webp"
+        alt={locale === 'zh' ? '创远 CHUANG YUAN' : 'CHUANG YUAN'}
+        width="1033"
+        height="264"
+      />
+    </a>
+
+    <nav class="header-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li class="nav-item"><a href={`/${locale}/`} class="nav-link">{labels.nav.home}</a></li>
+        <li class="nav-item"><a href={`/${locale}/about/`} class="nav-link">{labels.nav.about}</a></li>
+        <li class="nav-item"><a href={`/${locale}/brands/`} class="nav-link">{labels.nav.brands}</a></li>
+        <li class="nav-item"><a href={`/${locale}/contact/`} class="nav-link">{labels.nav.contact}</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <LangSwitch current={locale} />
+      <a href={`/${locale}/contact/`} class="btn btn-outline contact-btn">
+        {labels.cta.contact}
+      </a>
+    </div>
+
+    <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+    <a href={`/${locale}/`}>{labels.nav.home}</a>
+    <a href={`/${locale}/about/`}>{labels.nav.about}</a>
+    <a href={`/${locale}/brands/`}>{labels.nav.brands}</a>
+    <a href={`/${locale}/contact/`}>{labels.nav.contact}</a>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.mobile-menu-toggle');
+  const panel = document.querySelector<HTMLElement>('.mobile-nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    if (panel) panel.hidden = isOpen;
+  });
+</script>
+
+<style>
+  :global(.header) {
+    background: #0d0d0d;
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  :global(.header-inner) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  :global(.header-logo) {
+    display: flex;
+    align-items: center;
+    flex: 0 1 300px;
+    min-width: 0;
+  }
+
+  :global(.header-logo img) {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+  }
+
+  :global(.nav-list) {
+    display: flex;
+    list-style: none;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  :global(.nav-link) {
+    color: #ffffff;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    transition: background 0.2s;
+  }
+
+  :global(.nav-link:hover) {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  :global(.header-actions) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  :global(.contact-btn) {
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+  }
+
+  :global(.contact-btn:hover) {
+    background: #161616; color: #ffffff;
+    color: #fff;
+  }
+
+  :global(.mobile-menu-toggle) {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+  }
+
+  :global(.mobile-menu-toggle .bar) {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #ffffff;
+    margin: 4px 0;
+  }
+
+  :global(.mobile-nav) {
+    background: #0d0d0d;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 12px 20px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+  :global(.mobile-nav[hidden]) { display: none; }
+  :global(.mobile-nav a) {
+    color: #ffffff;
+    padding: 14px 0;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 960px) {
+    :global(.header) { padding: 14px 0; }
+    :global(.header-nav) { display: none; }
+    :global(.contact-btn) { display: none; }
+    :global(.header-logo) { flex: 0 1 210px; }
+    :global(.header-logo img) { max-width: 210px; }
+    :global(.header-actions) { gap: 8px; }
+    :global(.mobile-menu-toggle) { display: block; }
+  }
+</style>

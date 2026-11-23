@@ -1,0 +1,55 @@
+---
+const { current } = Astro.props;
+
+const locales = [
+  { code: 'en', label: 'EN' },
+  { code: 'zh', label: '中文' },
+];
+---
+
+<div class="lang-switch" aria-label="Language switcher">
+  {locales.map(({ code, label }) => (
+    <button
+      class={`lang-btn ${current === code ? 'active' : ''}`}
+      type="button"
+      aria-pressed={current === code}
+      data-locale={code}
+    >
+      {label}
+    </button>
+  ))}
+</div>
+
+<style>
+  :global(.lang-switch) {
+    display: inline-flex;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: var(--radius-full);
+    padding: 2px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  :global(.lang-btn) {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  :global(.lang-btn:hover) {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.lang-btn.active) {
+    background: #161616; color: #ffffff;
+    color: #fff;
+  }
+</style>
+
+<style>
+  :global(.lang-btn) { white-space: nowrap; }
+</style>

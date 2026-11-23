@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import BrandGrid from '../../components/BrandGrid.astro';
+import FullBleedImage from '../../components/FullBleedImage.astro';
+import WhyUsCards from '../../components/WhyUsCards.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const locale = 'en';
+---
+
+<Layout title="Home" description="Guangzhou Chuangyuan Mechanical and Electrical Equipment Co., Ltd. — high-quality electromechanical equipment supplier" locale={locale}>
+  <Hero locale={locale} />
+  <TrustBar locale={locale} />
+  <BrandGrid locale={locale} />
+  <FullBleedImage locale={locale} />
+  <WhyUsCards locale={locale} />
+  <ContactForm locale={locale} />
+</Layout>

@@ -1,0 +1,23 @@
+node_modules/
+app/node_modules/
+app/.astro/
+.workbuddy/
+*.log
+deploy-ghpages.sh
+# craft anything 内部数据，不进仓库
+investigation.cany/
+inbox/
+capture/
+checks/
+_backup/
+_orig/
+craft.json
+usage.json
+# 过程截图与 craft 会话产物
+_v*.png
+_v*.jpg
+feed.json
+transcript.json
+\_*/
+_*.png
+_*.jpg

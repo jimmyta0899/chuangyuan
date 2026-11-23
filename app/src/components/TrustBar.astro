@@ -1,0 +1,67 @@
+---
+const { locale } = Astro.props;
+
+const stats = [
+  {
+    number: '2015',
+    label: { en: 'Established', zh: '成立于' },
+  },
+  {
+    number: '7',
+    label: { en: 'Agent Brands', zh: '代理品牌' },
+  },
+  {
+    number: '3',
+    label: { en: 'Central Enterprise Groups', zh: '央企集团' },
+  },
+];
+---
+
+<section class="trust-bar" aria-labelledby="trust-heading">
+  <div class="container">
+    <h2 id="trust-heading" class="visually-hidden">{locale === 'zh' ? '信任数据' : 'Trust'}</h2>
+    <div class="trust-inner">
+      {stats.map((stat) => (
+        <div class="trust-stat">
+          <div class="trust-number">{stat.number}</div>
+          <div class="trust-label">{stat.label[locale]}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  :global(.trust-bar) {
+    background: var(--color-accent);
+    color: #fff;
+    padding: var(--space-3) 0;
+  }
+
+  :global(.trust-inner) {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  :global(.trust-stat) {
+    text-align: center;
+  }
+
+  :global(.trust-number) {
+    font-size: 30px;
+    font-weight: var(--font-weight-bold);
+  }
+
+  :global(.trust-label) {
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    :global(.trust-inner) {
+      justify-content: space-between;
+    }
+  }
+</style>

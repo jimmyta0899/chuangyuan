@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import BrandGrid from '../../components/BrandGrid.astro';
+import FullBleedImage from '../../components/FullBleedImage.astro';
+import WhyUsCards from '../../components/WhyUsCards.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const locale = 'zh';
+---
+
+<Layout title="首页" description="广州创远机电设备有限公司 — 高品质机电设备供应商，服务于国内采购及进出口贸易" locale={locale}>
+  <Hero locale={locale} />
+  <TrustBar locale={locale} />
+  <BrandGrid locale={locale} />
+  <FullBleedImage locale={locale} />
+  <WhyUsCards locale={locale} />
+  <ContactForm locale={locale} />
+</Layout>

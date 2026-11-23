@@ -1,0 +1,168 @@
+---
+const { locale } = Astro.props;
+
+const companyName = {
+  en: 'Guangzhou Chuangyuan Mechanical and Electrical Equipment Co., Ltd.',
+  zh: '广州创远机电设备有限公司',
+};
+const address = {
+  en: 'Room 304, 305, NO.8 ChiGang North Road, Haizhu District, GuangZhou, GuangDong, CHINA',
+  zh: '广州市海珠区赤岗北路8号瑞福大厦304、305室',
+};
+const phone = '020-62718818';
+const mobile = '14749327080';
+const email = 'Lucy@chuangyuancorp.com';
+
+const navLabels = {
+  home: locale === 'zh' ? '首页' : 'Home',
+  about: locale === 'zh' ? '关于我们' : 'About',
+  brands: locale === 'zh' ? '代理品牌' : 'Brands',
+  contact: locale === 'zh' ? '联系我们' : 'Contact',
+};
+const navItems = [
+  { href: `/${locale}/`, label: navLabels.home },
+  { href: `/${locale}/about/`, label: navLabels.about },
+  { href: `/${locale}/brands/`, label: navLabels.brands },
+  { href: `/${locale}/contact/`, label: navLabels.contact },
+];
+const footerContactLabel = locale === 'zh' ? '联系方式' : 'Contact';
+const footerNavLabel = locale === 'zh' ? '导航' : 'Navigation';
+---
+
+<footer class="footer" role="contentinfo" aria-label="Footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img
+        src="/images/logo-nubb-1200.webp"
+        alt="CHUANG YUAN logo"
+        width="150"
+        height="25"
+      />
+      <p class="footer-company">{companyName[locale]}</p>
+    </div>
+
+    <div class="footer-contact">
+      <h3>{footerContactLabel}</h3>
+      <p>{address[locale]}</p>
+      <p>Tel: {phone} &nbsp;|&nbsp; Mob: {mobile}</p>
+      <p>Email: <a href={`mailto:${email}`}>{email}</a></p>
+    </div>
+
+    <div class="footer-nav">
+      <h3>{footerNavLabel}</h3>
+      <ul>
+        {navItems.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="footer-copy">
+      <p>&copy; {new Date().getFullYear()} {companyName[locale]}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  :global(.footer) {
+    background: #111111;
+    color: #ffffff;
+    padding: var(--space-4) 0;
+    margin-top: auto;
+  }
+
+  :global(.footer-inner) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  :global(.footer-brand) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  :global(.footer-brand img) {
+    width: 150px;
+    height: auto;
+  }
+
+  :global(.footer-company) {
+    color: #ffffff;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+  }
+
+  :global(.footer-contact h3),
+  :global(.footer-nav h3) {
+    color: #ffffff;
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  :global(.footer-contact p) {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-2);
+    line-height: 1.5;
+  }
+
+  :global(.footer-contact a) {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  :global(.footer-nav ul) {
+    list-style: none;
+  }
+
+  :global(.footer-nav li) {
+    margin-bottom: var(--space-2);
+  }
+
+  :global(.footer-nav a) {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--font-size-sm);
+    transition: color 0.2s;
+  }
+
+  :global(.footer-nav a:hover) {
+    color: #ffffff;
+  }
+
+  :global(.footer-copy) {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: var(--space-4);
+    padding-top: var(--space-3);
+    text-align: center;
+  }
+
+  :global(.footer-copy p) {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    :global(.footer-inner) {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    :global(.footer-brand),
+    :global(.footer-contact),
+    :global(.footer-nav) {
+      text-align: center;
+    }
+
+    :global(.footer-nav ul) {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      align-items: center;
+    }
+  }
+</style>

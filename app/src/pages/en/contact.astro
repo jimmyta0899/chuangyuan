@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const locale = 'en';
+
+const checklist = [
+  'The brand and model you want quoted',
+  'Quantity and required delivery date',
+  'Destination port or project site',
+  'Any documentation the project requires',
+];
+---
+
+<Layout
+  title="Contact Us"
+  description="Reach Guangzhou Chuangyuan Mechanical and Electrical Equipment Co., Ltd. at Room 304, 305, NO.8 ChiGang North Road, Haizhu District, Guangzhou, or by phone and email."
+  locale={locale}
+  path="contact"
+>
+  <PageHero
+    title="Tell us the model, quantity and delivery point"
+    lead="Send an inquiry with the specification you need and we will reply with available brands and lead time."
+  />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-details">
+        <h2>Company details</h2>
+        <dl>
+          <div class="detail-row">
+            <dt>Company</dt>
+            <dd>Guangzhou Chuangyuan Mechanical and Electrical Equipment Co., Ltd.</dd>
+          </div>
+          <div class="detail-row">
+            <dt>Address</dt>
+            <dd>Room 304, 305, NO.8 ChiGang North Road, Haizhu District, Guangzhou, Guangdong, China</dd>
+          </div>
+          <div class="detail-row">
+            <dt>Postal code</dt>
+            <dd>510000</dd>
+          </div>
+          <div class="detail-row">
+            <dt>Tel / Fax</dt>
+            <dd><a href="tel:+862062718818">020-62718818</a></dd>
+          </div>
+          <div class="detail-row">
+            <dt>Mobile</dt>
+            <dd><a href="tel:+8614749327080">14749327080</a></dd>
+          </div>
+          <div class="detail-row">
+            <dt>Email</dt>
+            <dd><a href="mailto:Lucy@chuangyuancorp.com">Lucy@chuangyuancorp.com</a></dd>
+          </div>
+        </dl>
+
+        <h2>What to include</h2>
+        <ul class="checklist">
+          {checklist.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+
+      <div class="contact-form-wrap">
+        <ContactForm locale={locale} showInfo={false} />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  :global(.contact-grid) {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  :global(.contact-details h2) {
+    font-size: 1.375rem;
+    margin: 0 0 16px;
+    color: var(--color-text-dark);
+  }
+
+  :global(.contact-details h2:not(:first-child)) {
+    margin-top: 36px;
+  }
+
+  :global(.detail-row) {
+    padding: 12px 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+  }
+
+  :global(.detail-row:first-of-type) {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  :global(.detail-row dt) {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #666666;
+    margin-bottom: 4px;
+  }
+
+  :global(.detail-row dd) {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--color-text-dark);
+    line-height: 1.65;
+  }
+
+  :global(.detail-row a) {
+    color: #111111;
+  }
+
+  :global(.checklist) {
+    margin: 0;
+    padding-left: 20px;
+    color: #4a4a4a;
+    line-height: 2;
+  }
+
+  @media (max-width: 900px) {
+    :global(.contact-grid) { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>

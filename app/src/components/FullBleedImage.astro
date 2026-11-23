@@ -1,0 +1,86 @@
+---
+const { locale } = Astro.props;
+const copy = {
+  en: {
+    alt: 'Electrical switchgear cabinets photographed on the original Chuang Yuan website',
+    label: 'Industrial switchgear and control systems',
+    source: 'Image: original Chuang Yuan website',
+  },
+  zh: {
+    alt: '创远原网站展示的电气开关柜',
+    label: '工业开关柜与控制系统',
+    source: '图片：创远原网站',
+  },
+}[locale] ?? {};
+---
+
+<section class="fullbleed" aria-label={copy.label}>
+  <picture>
+    <source media="(min-width: 1400px)" srcset="/images/brand-gy3i-3200.webp" type="image/webp" />
+    <source media="(min-width: 800px)" srcset="/images/brand-gy3i-2560.webp" type="image/webp" />
+    <img
+      src="/images/brand-gy3i-1600.webp"
+      srcset="/images/brand-gy3i-1600.webp 1600w, /images/brand-gy3i-2560.webp 2560w, /images/brand-gy3i-3200.webp 3200w"
+      sizes="100vw"
+      alt={copy.alt}
+      width="3200"
+      height="852"
+      loading="lazy"
+      decoding="async"
+    />
+  </picture>
+  <div class="fullbleed-bar">
+    <div class="container fullbleed-bar-inner">
+      <span>{copy.label}</span>
+      <span class="fullbleed-source">{copy.source}</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  :global(.fullbleed) {
+    width: 100%;
+    background: #0d0d0d;
+  }
+
+  :global(.fullbleed picture) { display: block; width: 100%; }
+
+  :global(.fullbleed img) {
+    width: 100%;
+    height: clamp(360px, 46vw, 660px);
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+  }
+
+  :global(.fullbleed-bar) {
+    border-top: 1px solid rgba(255,255,255,0.14);
+    background: #0d0d0d;
+    color: rgba(255,255,255,0.86);
+  }
+
+  :global(.fullbleed-bar-inner) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  :global(.fullbleed-source) {
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: none;
+  }
+
+  @media (max-width: 768px) {
+    :global(.fullbleed img) { height: 300px; }
+    :global(.fullbleed-bar-inner) { flex-direction: column; align-items: flex-start; gap: 6px; font-size: 10px; }
+  }
+</style>

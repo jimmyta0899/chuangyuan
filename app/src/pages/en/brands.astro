@@ -1,0 +1,152 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import BrandGrid from '../../components/BrandGrid.astro';
+
+const locale = 'en';
+
+const lines = [
+  {
+    brand: 'Schneider Electric',
+    category: 'Electrical distribution, automation and energy management',
+    note: 'Electrical distribution and automation equipment for industrial and building projects.',
+  },
+  {
+    brand: 'Orbinox',
+    category: 'Valves',
+    note: 'Industrial valves for flow control in process and water applications.',
+  },
+  {
+    brand: 'Vertiv',
+    category: 'Critical digital infrastructure',
+    note: 'Power and thermal infrastructure for data and communication rooms.',
+  },
+  {
+    brand: 'Emerson',
+    category: 'Automation solutions and measurement',
+    note: 'Automation and measurement instruments for process control.',
+  },
+  {
+    brand: 'Samson',
+    category: 'Valves and control equipment',
+    note: 'Control valves and associated equipment for process lines.',
+  },
+  {
+    brand: 'Rosemount',
+    category: 'Measurement instrumentation',
+    note: 'Pressure, temperature and flow instrumentation.',
+  },
+  {
+    brand: 'Greenwood Crosby Valves',
+    category: 'Industrial valves',
+    note: 'Industrial valve products for project supply.',
+  },
+];
+---
+
+<Layout
+  title="Agent Brands"
+  description="Brands Chuang Yuan represents for project supply: Schneider Electric, Orbinox, Vertiv, Emerson, Samson, Rosemount and Greenwood Crosby Valves."
+  locale={locale}
+  path="brands"
+>
+  <PageHero
+    title="Seven brands we supply into project packages"
+    lead="We work with these brands so a single purchase order can cover electrical distribution, valves, instrumentation and critical infrastructure."
+  />
+
+  <BrandGrid locale={locale} />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>What each brand covers</h2>
+        <p>Category and the role each brand plays in a project package</p>
+      </div>
+      <div class="line-table" role="table" aria-label="Brand coverage">
+        <div class="line-head" role="row">
+          <span role="columnheader">Brand</span>
+          <span role="columnheader">Category</span>
+          <span role="columnheader">Where it fits</span>
+        </div>
+        {lines.map((l) => (
+          <div class="line-row" role="row">
+            <span class="line-brand" role="cell">{l.brand}</span>
+            <span role="cell">{l.category}</span>
+            <span role="cell">{l.note}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>Looking for a brand not listed here?</h2>
+        <p>Tell us the model and specification. We will confirm whether we can source it and what the lead time is.</p>
+      </div>
+      <a href="/en/contact/" class="btn btn-light">Contact Us</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  :global(.line-table) {
+    border: 1px solid rgba(17, 17, 17, 0.09);
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  :global(.line-head),
+  :global(.line-row) {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1.6fr;
+    gap: 16px;
+    padding: 14px 20px;
+    align-items: start;
+  }
+
+  :global(.line-head) {
+    background: #f5f5f5;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #666666;
+    font-weight: var(--font-weight-bold);
+  }
+
+  :global(.line-row) {
+    border-top: 1px solid rgba(17, 17, 17, 0.07);
+    font-size: 0.9375rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+  }
+
+  :global(.line-brand) {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-dark);
+  }
+
+  :global(.cta-band) {
+    background: #161616;
+    color: #ffffff;
+    padding: 40px 0;
+  }
+
+  :global(.cta-inner) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  :global(.cta-inner h2) { font-size: 1.375rem; margin: 0 0 6px; }
+  :global(.cta-inner p) { margin: 0; font-size: 0.9375rem; }
+
+  @media (max-width: 900px) {
+    :global(.line-head) { display: none; }
+    :global(.line-row) { grid-template-columns: 1fr; gap: 4px; }
+    :global(.cta-inner) { flex-direction: column; align-items: flex-start; }
+  }
+</style>

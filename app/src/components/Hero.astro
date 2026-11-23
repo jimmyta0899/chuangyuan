@@ -1,0 +1,227 @@
+---
+const { locale } = Astro.props;
+
+/* Copy stays inside source/FACTS.md. The Chinese line is the original site's
+   own slogan (创远机电为您量身订做), captured in _orig/home.html. */
+const copy = {
+  en: {
+    h1: 'High-end electromechanical equipment, valves and instrumentation',
+    sub: 'Tailored to your project — domestic procurement and import-export trade, since 2015.',
+    words: ['WIN-WIN', 'INNOVATION', 'COOPERATION'],
+    primary: 'Contact Us',
+    secondary: 'Our brands',
+    alt: 'Rows of electrical switchgear cabinets in an industrial assembly hall',
+    meta: 'EST. 2015  /  GUANGZHOU, CHINA',
+    scroll: 'Scroll',
+  },
+  zh: {
+    h1: '高端机电设备、阀门与仪表',
+    sub: '创远机电为您量身订做 —— 国内采购及进出口贸易，始于 2015 年。',
+    words: ['创新', '合作', '共赢'],
+    primary: '联系我们',
+    secondary: '代理品牌',
+    alt: '工业厂房中成排的电气开关柜',
+    meta: '创立于 2015 年  /  中国 · 广州',
+    scroll: '向下浏览',
+  },
+}[locale] ?? {};
+---
+
+<section class="hero" aria-labelledby="hero-heading">
+  <picture class="hero-media">
+    <source media="(min-width: 1800px)" srcset="/images/hero-p30x-3840.webp" type="image/webp" />
+    <source media="(min-width: 900px)" srcset="/images/hero-p30x-2560.webp" type="image/webp" />
+    <img
+      src="/images/hero-p30x-1600.webp"
+      srcset="/images/hero-p30x-1600.webp 1600w, /images/hero-p30x-2560.webp 2560w, /images/hero-p30x-3840.webp 3840w"
+      sizes="100vw"
+      alt={copy.alt}
+      width="3840"
+      height="2160"
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="hero-body">
+    <h1 id="hero-heading">{copy.h1}</h1>
+    <p class="hero-sub">{copy.sub}</p>
+
+    <div class="hero-words" aria-label={copy.words.join(' / ')}>
+      {copy.words.map((w: string, i: number) => (
+        <>
+          {i > 0 ? <span class="word-sep" aria-hidden="true"></span> : null}
+          <span>{w}</span>
+        </>
+      ))}
+    </div>
+
+    <div class="hero-actions">
+      <a href={`/${locale}/contact/`} class="btn btn-light">{copy.primary}</a>
+      <a href={`/${locale}/brands/`} class="hero-secondary">{copy.secondary}<span aria-hidden="true"> &#8594;</span></a>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <span>{copy.meta}</span>
+    <span class="hero-scroll"><i aria-hidden="true"></i>{copy.scroll}</span>
+  </div>
+</section>
+
+<style>
+  :global(.hero) {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d0d0d url('/images/hero-p30x-2560.webp') center center / cover no-repeat;
+    overflow: hidden;
+    color: #ffffff;
+  }
+
+  :global(.hero-media) {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+  }
+
+  :global(.hero-media img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    animation: hero-settle 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes hero-settle {
+    from { transform: scale(1.055); }
+    to   { transform: scale(1); }
+  }
+
+  :global(.hero-scrim) {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.34) 38%, rgba(0,0,0,0.40) 62%, rgba(0,0,0,0.78) 100%);
+  }
+
+  :global(.hero-body) {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 140px 28px 168px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  :global(.hero-body h1) {
+    color: #ffffff;
+    font-size: clamp(2.35rem, 5.1vw, 4.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+    font-weight: 700;
+    max-width: 20ch;
+    margin: 0 0 26px;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+  }
+
+  :global(.hero-sub) {
+    color: rgba(255,255,255,0.88);
+    font-size: clamp(1rem, 1.35vw, 1.2rem);
+    line-height: 1.7;
+    max-width: 58ch;
+    margin: 0 0 40px;
+    text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+  }
+
+  :global(.hero-words) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-bottom: 48px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.92);
+  }
+
+  :global(.word-sep) {
+    width: 26px;
+    height: 1px;
+    background: rgba(255,255,255,0.55);
+  }
+
+  :global(.hero-actions) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+
+  :global(.hero-secondary) {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+    padding-bottom: 5px;
+    transition: border-color 0.25s ease;
+  }
+  :global(.hero-secondary:hover) { border-color: #ffffff; }
+
+  :global(.hero-foot) {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 40px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  :global(.hero-scroll) { display: inline-flex; align-items: center; gap: 12px; }
+  :global(.hero-scroll i) {
+    display: block;
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.5);
+  }
+
+  @media (max-width: 768px) {
+    :global(.hero) { min-height: 100svh; }
+    :global(.hero-body) { padding: 120px 22px 140px; }
+    :global(.hero-body h1) {
+      max-width: 100%;
+      font-size: clamp(1.85rem, 8.5vw, 2.4rem);
+      letter-spacing: -0.035em;
+      overflow-wrap: break-word;
+    }
+    :global(.hero-sub) { font-size: 0.95rem; }
+    :global(.hero-words) { gap: 10px; font-size: 9px; letter-spacing: 0.12em; }
+    :global(.word-sep) { width: 14px; }
+    :global(.hero-foot) { padding: 0 22px 20px; font-size: 9px; letter-spacing: 0.14em; }
+    :global(.hero-actions) { gap: 20px; }
+  }
+</style>

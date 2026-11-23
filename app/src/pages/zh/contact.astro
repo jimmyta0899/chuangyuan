@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const locale = 'zh';
+
+const checklist = [
+  '需要询价的品牌与型号',
+  '数量与要求的交货时间',
+  '目的港或项目现场',
+  '项目要求的资料文件',
+];
+---
+
+<Layout
+  title="联系我们"
+  description="联系广州创远机电设备有限公司：广州市海珠区赤岗北路8号瑞福大厦304、305室，电话 020-62718818，邮箱 Lucy@chuangyuancorp.com。"
+  locale={locale}
+  path="contact"
+>
+  <PageHero
+    title="告诉我们型号、数量与交货地点"
+    lead="把需要采购的规格发给我们，我们会回复可选品牌与交货周期。"
+  />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-details">
+        <h2>公司信息</h2>
+        <dl>
+          <div class="detail-row">
+            <dt>公司名称</dt>
+            <dd>广州创远机电设备有限公司</dd>
+          </div>
+          <div class="detail-row">
+            <dt>地址</dt>
+            <dd>广州市海珠区赤岗北路8号瑞福大厦304、305室</dd>
+          </div>
+          <div class="detail-row">
+            <dt>邮编</dt>
+            <dd>510000</dd>
+          </div>
+          <div class="detail-row">
+            <dt>座机 / 传真</dt>
+            <dd><a href="tel:+862062718818">020-62718818</a></dd>
+          </div>
+          <div class="detail-row">
+            <dt>手机</dt>
+            <dd><a href="tel:+8614749327080">14749327080</a></dd>
+          </div>
+          <div class="detail-row">
+            <dt>邮箱</dt>
+            <dd><a href="mailto:Lucy@chuangyuancorp.com">Lucy@chuangyuancorp.com</a></dd>
+          </div>
+        </dl>
+
+        <h2>询价请附上</h2>
+        <ul class="checklist">
+          {checklist.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+
+      <div class="contact-form-wrap">
+        <ContactForm locale={locale} showInfo={false} />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  :global(.contact-grid) {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  :global(.contact-details h2) {
+    font-size: 1.375rem;
+    margin: 0 0 16px;
+    color: var(--color-text-dark);
+  }
+
+  :global(.contact-details h2:not(:first-child)) {
+    margin-top: 36px;
+  }
+
+  :global(.detail-row) {
+    padding: 12px 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+  }
+
+  :global(.detail-row:first-of-type) {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  :global(.detail-row dt) {
+    font-size: 0.75rem;
+    color: #666666;
+    margin-bottom: 4px;
+  }
+
+  :global(.detail-row dd) {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--color-text-dark);
+    line-height: 1.8;
+  }
+
+  :global(.detail-row a) {
+    color: #111111;
+  }
+
+  :global(.checklist) {
+    margin: 0;
+    padding-left: 20px;
+    color: #4a4a4a;
+    line-height: 2;
+  }
+
+  @media (max-width: 900px) {
+    :global(.contact-grid) { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>

@@ -1,0 +1,150 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import BrandGrid from '../../components/BrandGrid.astro';
+
+const locale = 'zh';
+
+const lines = [
+  {
+    brand: '施耐德电气',
+    category: '电气配电、自动化与能源管理',
+    note: '面向工业与建筑项目的配电及自动化设备。',
+  },
+  {
+    brand: '欧宾诺斯',
+    category: '阀门',
+    note: '用于工艺与水处理流程的工业阀门。',
+  },
+  {
+    brand: '维谛',
+    category: '关键数字基础设施',
+    note: '面向数据机房与通信机房的供电与温控基础设施。',
+  },
+  {
+    brand: '艾默生',
+    category: '自动化解决方案与测量',
+    note: '面向过程控制的自动化与测量仪表。',
+  },
+  {
+    brand: '萨姆森',
+    category: '阀门与控制设备',
+    note: '用于工艺管线的控制阀及相关设备。',
+  },
+  {
+    brand: '罗斯蒙特',
+    category: '测量仪表',
+    note: '压力、温度与流量类仪表。',
+  },
+  {
+    brand: '格林伍德克罗斯比阀门',
+    category: '工业阀门',
+    note: '面向项目供货的工业阀门产品。',
+  },
+];
+---
+
+<Layout
+  title="代理品牌"
+  description="创远为项目供货代理的品牌：施耐德电气、欧宾诺斯、维谛、艾默生、萨姆森、罗斯蒙特、格林伍德克罗斯比阀门。"
+  locale={locale}
+  path="brands"
+>
+  <PageHero
+    title="覆盖项目成套采购的七个品牌"
+    lead="我们与这些品牌合作，使一张采购订单可以同时覆盖电气配电、阀门、仪表与关键基础设施。"
+  />
+
+  <BrandGrid locale={locale} />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>各品牌覆盖范围</h2>
+        <p>品牌所属品类及其在项目成套中的位置</p>
+      </div>
+      <div class="line-table" role="table" aria-label="品牌覆盖范围">
+        <div class="line-head" role="row">
+          <span role="columnheader">品牌</span>
+          <span role="columnheader">品类</span>
+          <span role="columnheader">适用位置</span>
+        </div>
+        {lines.map((l) => (
+          <div class="line-row" role="row">
+            <span class="line-brand" role="cell">{l.brand}</span>
+            <span role="cell">{l.category}</span>
+            <span role="cell">{l.note}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>需要清单之外的其他品牌？</h2>
+        <p>把型号与规格发给我们，我们会确认能否采购以及交货周期。</p>
+      </div>
+      <a href="/zh/contact/" class="btn btn-light">联系我们</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  :global(.line-table) {
+    border: 1px solid rgba(17, 17, 17, 0.09);
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  :global(.line-head),
+  :global(.line-row) {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1.6fr;
+    gap: 16px;
+    padding: 14px 20px;
+    align-items: start;
+  }
+
+  :global(.line-head) {
+    background: #f5f5f5;
+    font-size: 0.75rem;
+    color: #666666;
+    font-weight: var(--font-weight-bold);
+  }
+
+  :global(.line-row) {
+    border-top: 1px solid rgba(17, 17, 17, 0.07);
+    font-size: 0.9375rem;
+    color: #4a4a4a;
+    line-height: 1.7;
+  }
+
+  :global(.line-brand) {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-dark);
+  }
+
+  :global(.cta-band) {
+    background: #161616;
+    color: #ffffff;
+    padding: 40px 0;
+  }
+
+  :global(.cta-inner) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  :global(.cta-inner h2) { font-size: 1.375rem; margin: 0 0 6px; }
+  :global(.cta-inner p) { margin: 0; font-size: 0.9375rem; }
+
+  @media (max-width: 900px) {
+    :global(.line-head) { display: none; }
+    :global(.line-row) { grid-template-columns: 1fr; gap: 4px; }
+    :global(.cta-inner) { flex-direction: column; align-items: flex-start; }
+  }
+</style>
