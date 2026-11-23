@@ -75,7 +75,7 @@ const brands = [
             {brand.hasImage ? (
               <img src={brand.image} alt={brand.imageAlt[locale]} width="1392" height="933" loading="lazy" />
             ) : (
-              <span class="brand-monogram" aria-hidden="true">{brand.name[locale].charAt(0)}</span>
+              <span class="brand-wordmark" aria-hidden="true">{brand.name[locale]}</span>
             )}
           </div>
           <div class="brand-card-body">
@@ -121,18 +121,21 @@ const brands = [
     border-radius: var(--radius-sm);
   }
 
-  :global(.brand-monogram) {
+  :global(.brand-wordmark) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    height: 56px;
+    text-align: center;
+    width: 100%;
+    min-height: 72px;
+    padding: 8px 12px;
     border-radius: 0;
-    background: rgba(17, 17, 17, 0.055);
+    background: rgba(17, 17, 17, 0.045);
     color: #111111;
-    font-size: var(--font-size-lg, 1.125rem);
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
+    font-size: 1.05rem;
+    font-weight: var(--font-weight-bold, 700);
+    letter-spacing: 0.01em;
+    line-height: 1.25;
   }
 
   :global(.brand-card-body h3) {
