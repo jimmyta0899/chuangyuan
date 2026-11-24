@@ -5,18 +5,22 @@ const locales = [
   { code: 'en', label: 'EN' },
   { code: 'zh', label: '中文' },
 ];
+
+// Keep the visitor on the same page when switching language.
+// Static build URLs are /zh/... or /en/...; the preview script prefixes them.
+const pathMatch = Astro.url.pathname.match(/^\/(?:zh|en)(\/.*)?$/);
+const suffix = pathMatch?.[1] && pathMatch[1] !== '/' ? pathMatch[1] : '/';
 ---
 
 <div class="lang-switch" aria-label="Language switcher">
   {locales.map(({ code, label }) => (
-    <button
+    <a
       class={`lang-btn ${current === code ? 'active' : ''}`}
-      type="button"
-      aria-pressed={current === code}
-      data-locale={code}
+      href={`/${code}${suffix}`}
+      aria-current={current === code ? 'page' : undefined}
     >
       {label}
-    </button>
+    </a>
   ))}
 </div>
 
@@ -30,12 +34,15 @@ const locales = [
   }
 
   :global(.lang-btn) {
+    display: inline-block;
     background: transparent;
     border: none;
     color: #ffffff;
     padding: 4px 12px;
     border-radius: var(--radius-full);
     font-size: var(--font-size-sm);
+    line-height: 1.5;
+    text-decoration: none;
     cursor: pointer;
     transition: background 0.2s;
   }
