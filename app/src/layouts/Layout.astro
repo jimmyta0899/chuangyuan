@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { GA4_MEASUREMENT_ID, GOOGLE_TAG_CONTAINER_ID } from '../config/analytics';
 
 export interface Props {
   title: string;
@@ -22,6 +23,15 @@ const zhUrl = `https://www.chuangyuancorp.com${zhPath}`;
 <!DOCTYPE html>
 <html lang={locale === 'zh' ? 'zh-CN' : 'en-US'} dir="ltr">
 <head>
+  <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_CONTAINER_ID}`}></script>
+  <script is:inline define:vars={{ containerId: GOOGLE_TAG_CONTAINER_ID, measurementId: GA4_MEASUREMENT_ID }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    // The GA4 config tag lives inside the Google tag container; the measurement
+    // ID is exposed here only for verification and future custom events.
+    window.__cyAnalytics = { containerId, measurementId };
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />

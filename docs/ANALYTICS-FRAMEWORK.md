@@ -1,11 +1,10 @@
 # GA4 / GSC / GTM 框架与接入步骤（占位符阶段）
 
-> 本阶段只搭框架 + 占位符，不接真实 ID（用户 2026-11-23 决策）。
-> 真实 ID 与域名验证须用户提供后填入，并在切换当天验证。
+> 2026-11-25 已接入真实 ID：GA4 measurement `G-127ZKMZS0X`，Google tag / GTM container `GTM-WRMKGVGB`；GSC URL 前缀属性 `https://www.chuangyuancorp.com/` 已建，HTML 文件验证中。GA4 配置标签由 Google tag 容器下发，页面不另装独立 gtag，避免重复 page_view。
 
 ## 1. GA4（Google Analytics 4）
 
-**状态**：占位。待用户提供 measurement ID（形如 `G-XXXXXXXXXX`）。
+**状态**：已接入。`G-127ZKMZS0X`（property `565773757`，web stream `16408544898`），通过 Google tag 容器下发，ID 存于 `app/src/config/analytics.ts`。
 
 框架要求（builder/实现者照此留位）：
 - GA4 脚本通过环境变量注入，如 `NEXT_PUBLIC_GA_ID`，放在 `.env.local`（**不进 git**）。
@@ -20,7 +19,7 @@
 
 ## 2. GSC（Google Search Console）
 
-**状态**：未验证（需域名控制权）。
+**状态**：URL 前缀属性已建，HTML 文件验证阶段。验证文件 `googlebff6e25a7117fd4b.html` 放产物根。
 
 框架要求：
 - 站点地图路径固定 `/sitemap.xml`，robots.txt 声明之。
@@ -35,7 +34,7 @@
 
 ## 3. GTM（Google Tag Manager）
 
-**状态**：占位。待用户提供 container ID（形如 `GTM-XXXXXXX`）。
+**状态**：已接入。`GTM-WRMKGVGB`（GA4 建流时 Google 自动生成的 Google tag 容器），页面注入官方 snippet，GA4 tag 在容器内配置。
 
 框架要求：
 - GTM 容器骨架：`<head>` 与 `<body>` 两段标准 snippet 的挂载位，通过环境变量 `NEXT_PUBLIC_GTM_ID` 控制。
