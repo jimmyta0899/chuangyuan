@@ -15,7 +15,8 @@ const copy = {
     scroll: 'Scroll',
   },
   zh: {
-    h1: '高端机电设备、阀门与仪表',
+    h1: '高端机电设备',
+    h1Line2: '阀门与仪表',
     sub: '创远机电为您量身订做 —— 国内采购及进出口贸易，始于 2015 年。',
     words: ['创新', '合作', '共赢'],
     primary: '联系我们',
@@ -45,7 +46,9 @@ const copy = {
   <div class="hero-scrim" aria-hidden="true"></div>
 
   <div class="hero-body">
-    <h1 id="hero-heading">{copy.h1}</h1>
+    <h1 id="hero-heading" class={locale === 'zh' ? 'hero-h1-zh' : undefined}>
+      {copy.h1}{copy.h1Line2 ? <><br />{copy.h1Line2}</> : null}
+    </h1>
     <p class="hero-sub">{copy.sub}</p>
 
     <div class="hero-words" aria-label={copy.words.join(' / ')}>
@@ -132,6 +135,13 @@ const copy = {
     max-width: 20ch;
     margin: 0 0 26px;
     text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+  }
+
+  /* Chinese headline breaks only where we place it, never mid-phrase. */
+  :global(.hero-body h1.hero-h1-zh) {
+    max-width: none;
+    letter-spacing: -0.02em;
+    line-height: 1.14;
   }
 
   :global(.hero-sub) {

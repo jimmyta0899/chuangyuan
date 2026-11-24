@@ -29,7 +29,7 @@ const footerContactLabel = locale === 'zh' ? '联系方式' : 'Contact';
 const footerNavLabel = locale === 'zh' ? '导航' : 'Navigation';
 ---
 
-<footer class="footer" role="contentinfo" aria-label="Footer">
+<footer class="footer" id="site-footer" role="contentinfo" aria-label="Footer">
   <div class="container footer-inner">
     <div class="footer-brand">
       <img
@@ -45,7 +45,10 @@ const footerNavLabel = locale === 'zh' ? '导航' : 'Navigation';
       <h3>{footerContactLabel}</h3>
       <p>{address[locale]}</p>
       <p>Tel: {phone} &nbsp;|&nbsp; Mob: {mobile}</p>
-      <p>Email: <a href={`mailto:${email}`}>{email}</a></p>
+      <p class="footer-email">
+        <span>{locale === 'zh' ? '邮箱' : 'Email'}</span>
+        <a href={`mailto:${email}`}>{email}</a>
+      </p>
     </div>
 
     <div class="footer-nav">
@@ -113,6 +116,34 @@ const footerNavLabel = locale === 'zh' ? '导航' : 'Navigation';
   :global(.footer-contact a) {
     color: #ffffff;
     text-decoration: underline;
+  }
+
+  :global(.footer-email) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: var(--space-2);
+  }
+
+  :global(.footer-email span) {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  :global(.footer-email a) {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+    padding-bottom: 1px;
+  }
+
+  :global(.footer-email a:hover) {
+    border-bottom-color: #ffffff;
   }
 
   :global(.footer-nav ul) {
