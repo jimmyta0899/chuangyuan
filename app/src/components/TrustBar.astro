@@ -32,8 +32,10 @@ const stats = [
 </section>
 
 <style>
+  /* --color-accent resolves to #ffffff, so this band was white-on-white and
+     rendered as an invisible strip of text. Use the night surface instead. */
   :global(.trust-bar) {
-    background: var(--color-accent);
+    background: var(--color-night);
     color: #fff;
     padding: var(--space-3) 0;
   }
