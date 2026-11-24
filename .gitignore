@@ -24,3 +24,5 @@ _*.jpg
 app/dist-preview/
 _tk
 _cy_tk
+_live*.html
+_live*.css
