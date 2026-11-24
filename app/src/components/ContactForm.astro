@@ -87,8 +87,18 @@ const addr = {
     font-size: var(--font-size-sm);
   }
 
+  /* Light section: links must be dark ink. --color-accent is #ffffff,
+     which made the email white-on-white and completely invisible. */
   :global(.contact-info a) {
-    color: var(--color-accent);
+    color: var(--color-text-dark);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    padding-bottom: 1px;
+  }
+
+  :global(.contact-info a:hover) {
+    border-bottom-color: var(--color-text-dark);
   }
 
   :global(.form-group) {
@@ -116,7 +126,8 @@ const addr = {
 
   :global(.form-group input:focus),
   :global(.form-group textarea:focus) {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid rgba(0, 0, 0, 0.55);
+    outline-offset: 2px;
     border-color: transparent;
   }
 
