@@ -2,14 +2,12 @@
 const { locale } = Astro.props;
 const copy = {
   en: {
-    alt: 'Electrical switchgear cabinets photographed on the original Chuang Yuan website',
+    alt: 'Rows of electrical switchgear cabinets in an industrial assembly hall',
     label: 'Industrial switchgear and control systems',
-    source: 'Image: original Chuang Yuan website',
   },
   zh: {
-    alt: '创远原网站展示的电气开关柜',
+    alt: '工业厂房中成排的电气开关柜',
     label: '工业开关柜与控制系统',
-    source: '图片：创远原网站',
   },
 }[locale] ?? {};
 ---
@@ -32,7 +30,6 @@ const copy = {
   <div class="fullbleed-bar">
     <div class="container fullbleed-bar-inner">
       <span>{copy.label}</span>
-      <span class="fullbleed-source">{copy.source}</span>
     </div>
   </div>
 </section>
@@ -70,13 +67,6 @@ const copy = {
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-  }
-
-  :global(.fullbleed-source) {
-    color: rgba(255,255,255,0.5);
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: none;
   }
 
   @media (max-width: 768px) {

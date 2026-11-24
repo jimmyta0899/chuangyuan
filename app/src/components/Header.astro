@@ -2,6 +2,8 @@
 import LangSwitch from '../components/LangSwitch.astro';
 
 const locale = Astro.props.locale || 'en';
+const phone = '020-62718818';
+const email = 'Lucy@chuangyuancorp.com';
 const labels = {
   nav: {
     home: locale === 'zh' ? '首页' : 'Home',
@@ -20,6 +22,16 @@ const labels = {
 ---
 
 <header class="header" aria-label="Banner">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="topbar-item topbar-phone" href="tel:+862062718818">Tel {phone}</a>
+      <a class="topbar-item topbar-mail" href={`mailto:${email}`}>
+        <span class="topbar-label">{locale === 'zh' ? '邮箱' : 'Email'}</span>
+        <span class="topbar-value">{email}</span>
+      </a>
+    </div>
+  </div>
+
   <div class="container header-inner">
     <a href={`/${locale}/`} class="header-logo" aria-label={locale === 'zh' ? '创远 首页' : 'CHUANG YUAN homepage'}>
       <img
@@ -74,11 +86,49 @@ const labels = {
 <style>
   :global(.header) {
     background: #0d0d0d;
-    padding: 18px 0;
+    padding: 0 0 18px;
     position: sticky;
     top: 0;
     z-index: 100;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  :global(.topbar) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 14px;
+  }
+
+  :global(.topbar-inner) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 34px;
+  }
+
+  :global(.topbar-item) {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  :global(.topbar-item:hover) { color: #ffffff; }
+
+  :global(.topbar-mail .topbar-label) {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  :global(.topbar-mail .topbar-value) {
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 1px;
   }
 
   :global(.header-inner) {
@@ -138,6 +188,11 @@ const labels = {
     color: #fff;
   }
 
+  @media (max-width: 768px) {
+    :global(.topbar-phone) { display: none; }
+    :global(.topbar-inner) { justify-content: center; }
+  }
+
   :global(.mobile-menu-toggle) {
     display: none;
     background: none;
@@ -179,6 +234,11 @@ const labels = {
     :global(.header-logo) { flex: 0 1 210px; }
     :global(.header-logo img) { max-width: 210px; }
     :global(.header-actions) { gap: 8px; }
-    :global(.mobile-menu-toggle) { display: block; }
+    @media (max-width: 768px) {
+    :global(.topbar-phone) { display: none; }
+    :global(.topbar-inner) { justify-content: center; }
+  }
+
+  :global(.mobile-menu-toggle) { display: block; }
   }
 </style>

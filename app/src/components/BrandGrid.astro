@@ -8,9 +8,9 @@ const { locale, showTitle = true } = Astro.props;
  *  - Samson: Wikimedia Commons file "Samson logo wiki.png".
  *  - Rosemount: Emerson media server, official Rosemount wordmark, recolored
  *    single-tone for light backgrounds.
- *  - Greenwood Crosby: typographic wordmark set locally; this brand is an
- *    Emerson sub-brand (Anderson Greenwood / Crosby) with no standalone public
- *    logo, so it is a wordmark rather than an official mark.
+ *  - Greenwood Crosby: official Anderson Greenwood Crosby (AGC) mark supplied by
+ *    the client as agcsl-logo.png on 2026-11-24, kept at
+ *    source/images/brands-raw/agcsl-logo.png; white background knocked out.
  */
 const brands = [
   {
@@ -63,11 +63,11 @@ const brands = [
   },
   {
     key: 'greenwood',
-    name: { en: 'Greenwood Crosby Valves', zh: '格林伍德克罗斯比阀门' },
+    name: { en: 'Anderson Greenwood Crosby', zh: '安德森格林伍德克罗斯比' },
     desc: { en: 'Pressure relief and safety valves', zh: '泄压与安全阀' },
     image: '/images/brand-greenwood-logo.webp',
-    alt: { en: 'Greenwood Crosby Valves wordmark', zh: '格林伍德克罗斯比阀门字标' },
-    ratio: [666, 63],
+    alt: { en: 'Anderson Greenwood Crosby (AGC) logo', zh: '安德森格林伍德克罗斯比标志' },
+    ratio: [484, 246],
   },
 ];
 ---

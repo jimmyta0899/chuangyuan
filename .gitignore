@@ -22,3 +22,5 @@ transcript.json
 _*.png
 _*.jpg
 app/dist-preview/
+_tk
+_cy_tk
