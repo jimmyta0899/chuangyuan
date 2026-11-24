@@ -15,7 +15,7 @@
 | 项目经验 | 参与多个国内外大型工程项目 | participated in many large-scale projects at home and abroad |
 | 客户资质 | 中交集团、中能建、中铁国际等知名央企的合格供应商 | a qualified supplier for well-known central enterprises such as China Communications Construction Company (CCCC), China Energy Engineering Group Co., Ltd., China Railway International Co., Ltd. |
 
-## 2. 代理品牌（page87 产品中心，7 个）
+## 2. 合作品牌（page87 产品中心；2026-11-24 客户确认共 8 个）
 
 1. Schneider（施耐德）— 品牌介绍 + 产品图
 2. Orbinox（欧宾诺斯）— 品牌介绍（阀门）
@@ -23,9 +23,10 @@
 4. Emerson（艾默生）— 品牌介绍
 5. Samson（萨姆森）— 品牌介绍
 6. Rosemount（罗斯蒙特）— 产品介绍
-7. 格林伍德克罗斯比阀门（Greenwood Crosby）— 产品介绍
+7. 安德森格林伍德克罗斯比（Anderson Greenwood Crosby）— 产品介绍，官方标志由客户提供（agcsl-logo.png）
+8. 昂顿（Energle Daten）— 交换机、综合保护装置；2026-11-24 客户提供标志（1124_1.png），英文拼写取自该标志，中文名与产品线由客户提供、未经独立核实
 
-**注意**：现有可下载图片中只有 Schneider 相关图（见 IMAGES.md），其余 6 个品牌暂无图片素材。文案可提品牌名（有出处），但不得为其配不存在的产品图。
+**注意**：八个品牌各配一张可核查的标志图，逐张来源见 `images/PROVENANCE.md`。品牌名可提，但不得为任何品牌配不存在的产品图。
 
 ## 3. 企业资质与理念（page86）
 
@@ -38,10 +39,9 @@
 
 | 项 | 值 |
 |---|---|
-| 地址（中） | 广州市海珠区赤岗北路8号瑞福大厦304、305室 |
-| 地址（英） | Room 304, 305, NO.8 ChiGang North Road, Haizhu District, GuangZhou, GuangDong, CHINA |
+| 地址（中） | 广州市海珠区新业路55号之21-B21-7 |
+| 地址（英） | Unit B21-7, No.55-21 Xinye Road, Haizhu District, Guangzhou, Guangdong, China（由中文门牌直译，非客户提供的官方英文名） |
 | 邮编 | 510000 |
-| 座机 / 传真 | 020-62718818 |
 | 手机 | 14749327080 |
 | 邮箱 | Lucy@chuangyuancorp.com |
 

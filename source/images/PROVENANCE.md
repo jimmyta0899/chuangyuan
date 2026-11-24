@@ -12,6 +12,7 @@
 | brand-gy3i-1600.webp / -2560.webp / -3200.webp | 1920×511 | 1600×426 / 2560×681 / 3200×852 | 首页中部满宽图带，三档响应式 |
 | brand-Schneider-1200.webp | 600×177 | 1200×354 | 品牌页 Schneider 标识 |
 | brand-greenwood-logo.webp | 496×273（客户提供 agcsl-logo.png） | 484×246 | Anderson Greenwood Crosby 官方标志，白底去除，原始文件存 `source/images/brands-raw/agcsl-logo.png` |
+| brand-energle-logo.webp | 520×180（客户提供 1124_1.png） | 520×180 | Energle Daten 标志，白底去除，原始文件存 `source/images/brands-raw/energle-daten.png`；中文名「昂顿」与产品线「交换机、综合保护装置」由客户提供，未经独立核实 |
 | brand-arkp-1200.webp | 947×595 | 1200×754 | 品牌资料图（备用） |
 | brand-bgib-1400.webp | 916×307 | 1400×469 | 品牌资料图（备用） |
 | brand-lfhn-1400.webp | 843×282 | 1400×468 | 品牌资料图（备用） |
@@ -21,5 +22,5 @@
 ## 使用说明
 
 - 主图与中部图带用 `<picture>` + `srcset`，`sizes="100vw"`，无头截图需 `--virtual-time-budget` 才会等到 async 解码完成；线上浏览器正常。
-- 品牌区七个品牌各配一张可核查的标志图：Schneider / Orbinox / Vertiv / Emerson 取自客户现有站品牌墙，Samson 取自 Wikimedia Commons，Rosemount 取自 Emerson 媒体库，Anderson Greenwood Crosby 由客户于 2026-11-24 提供（agcsl-logo.png）。不许用产品图冒充标志。
+- 品牌区八个品牌各配一张可核查的标志图：Schneider / Orbinox / Vertiv / Emerson 取自客户现有站品牌墙，Samson 取自 Wikimedia Commons，Rosemount 取自 Emerson 媒体库，Anderson Greenwood Crosby（agcsl-logo.png）与 Energle Daten（1124_1.png）由客户于 2026-11-24 提供。不许用产品图冒充标志。
 - 2026-11-24 起按客户要求删除通栏图的 caption “Image: original Chuang Yuan website” / “图片：创远原网站”，图带只保留行业描述行。

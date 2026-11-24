@@ -2,17 +2,16 @@
 import LangSwitch from '../components/LangSwitch.astro';
 
 const locale = Astro.props.locale || 'en';
-const phone = '020-62718818';
 const email = 'Lucy@chuangyuancorp.com';
 const labels = {
   nav: {
     home: locale === 'zh' ? '首页' : 'Home',
     about: locale === 'zh' ? '关于我们' : 'About',
-    brands: locale === 'zh' ? '代理品牌' : 'Brands',
+    brands: locale === 'zh' ? '合作品牌' : 'Brands',
     contact: locale === 'zh' ? '联系我们' : 'Contact',
   },
   cta: { contact: locale === 'zh' ? '联系我们' : 'Contact Us' },
-  brands: { title: locale === 'zh' ? '代理品牌' : 'Agent Brands', subtitle: locale === 'zh' ? '我们代理的全球品牌' : 'The global brands we represent' },
+  brands: { title: locale === 'zh' ? '合作品牌' : 'Partner Brands', subtitle: locale === 'zh' ? '我们合作的全球品牌' : 'The global brands we partner with' },
   whyus: { title: locale === 'zh' ? '为什么选择我们' : 'Why Choose Us', subtitle: locale === 'zh' ? '创远优势' : 'What sets us apart' },
   trust: { title: locale === 'zh' ? '信任数据' : 'Trust' },
   wall: { title: locale === 'zh' ? '品牌墙' : 'Brand Wall' },
@@ -24,7 +23,6 @@ const labels = {
 <header class="header" aria-label="Banner">
   <div class="topbar">
     <div class="container topbar-inner">
-      <a class="topbar-item topbar-phone" href="tel:+862062718818">Tel {phone}</a>
       <a class="topbar-item topbar-mail" href={`mailto:${email}`}>
         <span class="topbar-label">{locale === 'zh' ? '邮箱' : 'Email'}</span>
         <span class="topbar-value">{email}</span>
@@ -101,7 +99,7 @@ const labels = {
   :global(.topbar-inner) {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 16px;
     min-height: 34px;
   }
@@ -189,7 +187,6 @@ const labels = {
   }
 
   @media (max-width: 768px) {
-    :global(.topbar-phone) { display: none; }
     :global(.topbar-inner) { justify-content: center; }
   }
 
@@ -235,7 +232,6 @@ const labels = {
     :global(.header-logo img) { max-width: 210px; }
     :global(.header-actions) { gap: 8px; }
     @media (max-width: 768px) {
-    :global(.topbar-phone) { display: none; }
     :global(.topbar-inner) { justify-content: center; }
   }
 

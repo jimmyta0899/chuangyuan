@@ -6,17 +6,16 @@ const companyName = {
   zh: '广州创远机电设备有限公司',
 };
 const address = {
-  en: 'Room 304, 305, NO.8 ChiGang North Road, Haizhu District, GuangZhou, GuangDong, CHINA',
-  zh: '广州市海珠区赤岗北路8号瑞福大厦304、305室',
+  en: 'Unit B21-7, No.55-21 Xinye Road, Haizhu District, Guangzhou, Guangdong, China',
+  zh: '广州市海珠区新业路55号之21-B21-7',
 };
-const phone = '020-62718818';
 const mobile = '14749327080';
 const email = 'Lucy@chuangyuancorp.com';
 
 const navLabels = {
   home: locale === 'zh' ? '首页' : 'Home',
   about: locale === 'zh' ? '关于我们' : 'About',
-  brands: locale === 'zh' ? '代理品牌' : 'Brands',
+  brands: locale === 'zh' ? '合作品牌' : 'Brands',
   contact: locale === 'zh' ? '联系我们' : 'Contact',
 };
 const navItems = [
@@ -44,7 +43,7 @@ const footerNavLabel = locale === 'zh' ? '导航' : 'Navigation';
     <div class="footer-contact">
       <h3>{footerContactLabel}</h3>
       <p>{address[locale]}</p>
-      <p>Tel: {phone} &nbsp;|&nbsp; Mob: {mobile}</p>
+      <p>Mobile: {mobile}</p>
       <p class="footer-email">
         <span>{locale === 'zh' ? '邮箱' : 'Email'}</span>
         <a href={`mailto:${email}`}>{email}</a>

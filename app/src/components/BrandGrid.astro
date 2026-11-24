@@ -11,6 +11,10 @@ const { locale, showTitle = true } = Astro.props;
  *  - Greenwood Crosby: official Anderson Greenwood Crosby (AGC) mark supplied by
  *    the client as agcsl-logo.png on 2026-11-24, kept at
  *    source/images/brands-raw/agcsl-logo.png; white background knocked out.
+ *  - Energle Daten: logo supplied by the client as 1124_1.png on 2026-11-24,
+ *    kept at source/images/brands-raw/energle-daten.png; white knocked out.
+ *    The English spelling is read from the supplied logo; the Chinese name
+ *    (昂顿) and the product lines are client-provided, not independently verified.
  */
 const brands = [
   {
@@ -69,6 +73,14 @@ const brands = [
     alt: { en: 'Anderson Greenwood Crosby (AGC) logo', zh: '安德森格林伍德克罗斯比标志' },
     ratio: [484, 246],
   },
+  {
+    key: 'energle',
+    name: { en: 'Energle Daten', zh: '昂顿' },
+    desc: { en: 'Network switches and integrated protection devices', zh: '交换机、综合保护装置' },
+    image: '/images/brand-energle-logo.webp',
+    alt: { en: 'Energle Daten logo', zh: '昂顿标志' },
+    ratio: [520, 180],
+  },
 ];
 ---
 
@@ -76,8 +88,8 @@ const brands = [
   <div class="container">
     {showTitle && (
       <div class="section-title">
-        <h2 id="brands-heading">{locale === 'zh' ? '代理品牌' : 'Agent Brands'}</h2>
-        <p>{locale === 'zh' ? '我们代理的全球品牌' : 'The global brands we represent'}</p>
+        <h2 id="brands-heading">{locale === 'zh' ? '合作品牌' : 'Partner Brands'}</h2>
+        <p>{locale === 'zh' ? '我们合作的全球品牌' : 'The global brands we partner with'}</p>
       </div>
     )}
 
