@@ -6,7 +6,9 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      filter: (page) => page !== 'https://www.chuangyuancorp.com/',
+      filter: (page) =>
+        page !== 'https://www.chuangyuancorp.com/' &&
+        !/\/page(86|87|88|89|93)\/?$/.test(page),
       i18n: {
         defaultLocale: 'en',
         locales: { en: 'en-US', zh: 'zh-CN' },

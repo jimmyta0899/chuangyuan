@@ -68,5 +68,46 @@ const zhUrl = `https://www.chuangyuancorp.com${zhPath}`;
     <slot />
   </main>
   <Footer locale={locale} />
+
+  <!-- Event delegation for the four GA4 custom events. Elements opt in with
+       data-cy-event plus optional data-cy-location / data-cy-locale / data-cy-brand. -->
+  <script is:inline>
+    (function () {
+      function pushEvent(name, detail) {
+        if (!window.dataLayer || !name) return;
+        var payload = { event: name };
+        for (var key in detail) {
+          if (Object.prototype.hasOwnProperty.call(detail, key)) payload[key] = detail[key];
+        }
+        window.dataLayer.push(payload);
+      }
+
+      function readDetail(element) {
+        var detail = {};
+        ['location', 'locale', 'brand'].forEach(function (key) {
+          var value = element.getAttribute('data-cy-' + key);
+          if (value) detail[key] = value;
+        });
+        return detail;
+      }
+
+      document.addEventListener('click', function (event) {
+        var target = event.target;
+        if (!target || typeof target.closest !== 'function') return;
+        var element = target.closest('[data-cy-event]');
+        // The submit button sits inside a tagged form; submit handles that event.
+        if (!element || element.tagName === 'FORM') return;
+        pushEvent(element.getAttribute('data-cy-event'), readDetail(element));
+      });
+
+      document.addEventListener('submit', function (event) {
+        var form = event.target;
+        if (!form || typeof form.getAttribute !== 'function') return;
+        var name = form.getAttribute('data-cy-event');
+        if (!name) return;
+        pushEvent(name, readDetail(form));
+      });
+    })();
+  </script>
 </body>
 </html>

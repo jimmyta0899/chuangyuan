@@ -18,6 +18,8 @@ const suffix = pathMatch?.[1] && pathMatch[1] !== '/' ? pathMatch[1] : '/';
       class={`lang-btn ${current === code ? 'active' : ''}`}
       href={`/${code}${suffix}`}
       aria-current={current === code ? 'page' : undefined}
+      data-cy-event="language_switch"
+      data-cy-locale={code}
     >
       {label}
     </a>

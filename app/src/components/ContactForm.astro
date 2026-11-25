@@ -39,7 +39,7 @@ const addr = {
     )}
 
     <div class="contact-form-wrap">
-      <form action="#" method="POST" aria-label="Contact form" class="contact-form">
+      <form action="#" method="POST" aria-label="Contact form" class="contact-form" data-cy-event="form_submit" data-cy-location={showInfo ? 'contact-page' : 'inline-form'}>
         <div class="form-group">
           <label for="name">{formLabels[locale].name}</label>
           <input type="text" id="name" name="name" required />

@@ -95,7 +95,7 @@ const brands = [
 
     <div class="grid-4 brand-grid-inner">
       {brands.map((brand) => (
-        <article class="brand-card">
+        <article class="brand-card" data-cy-event="brand_card_click" data-cy-brand={brand.key}>
           <div class="brand-media">
             <img
               src={brand.image}

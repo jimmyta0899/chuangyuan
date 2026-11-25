@@ -45,13 +45,13 @@ const labels = {
         <li class="nav-item"><a href={`/${locale}/`} class="nav-link">{labels.nav.home}</a></li>
         <li class="nav-item"><a href={`/${locale}/about/`} class="nav-link">{labels.nav.about}</a></li>
         <li class="nav-item"><a href={`/${locale}/brands/`} class="nav-link">{labels.nav.brands}</a></li>
-        <li class="nav-item"><a href={`/${locale}/contact/`} class="nav-link">{labels.nav.contact}</a></li>
+        <li class="nav-item"><a href={`/${locale}/contact/`} class="nav-link" data-cy-event="contact_cta_click" data-cy-location="header-nav">{labels.nav.contact}</a></li>
       </ul>
     </nav>
 
     <div class="header-actions">
       <LangSwitch current={locale} />
-      <a href={`/${locale}/contact/`} class="btn btn-outline contact-btn">
+      <a href={`/${locale}/contact/`} class="btn btn-outline contact-btn" data-cy-event="contact_cta_click" data-cy-location="header-cta">
         {labels.cta.contact}
       </a>
     </div>
@@ -67,7 +67,7 @@ const labels = {
     <a href={`/${locale}/`}>{labels.nav.home}</a>
     <a href={`/${locale}/about/`}>{labels.nav.about}</a>
     <a href={`/${locale}/brands/`}>{labels.nav.brands}</a>
-    <a href={`/${locale}/contact/`}>{labels.nav.contact}</a>
+    <a href={`/${locale}/contact/`} data-cy-event="contact_cta_click" data-cy-location="mobile-nav">{labels.nav.contact}</a>
   </nav>
 </header>
 

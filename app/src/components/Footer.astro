@@ -22,7 +22,7 @@ const navItems = [
   { href: `/${locale}/`, label: navLabels.home },
   { href: `/${locale}/about/`, label: navLabels.about },
   { href: `/${locale}/brands/`, label: navLabels.brands },
-  { href: `/${locale}/contact/`, label: navLabels.contact },
+  { href: `/${locale}/contact/`, label: navLabels.contact, event: 'contact_cta_click', location: 'footer-nav' },
 ];
 const footerContactLabel = locale === 'zh' ? '联系方式' : 'Contact';
 const footerNavLabel = locale === 'zh' ? '导航' : 'Navigation';
@@ -46,7 +46,7 @@ const footerNavLabel = locale === 'zh' ? '导航' : 'Navigation';
       <p>Mobile: {mobile}</p>
       <p class="footer-email">
         <span>{locale === 'zh' ? '邮箱' : 'Email'}</span>
-        <a href={`mailto:${email}`}>{email}</a>
+        <a href={`mailto:${email}`} data-cy-event="contact_cta_click" data-cy-location="footer-email">{email}</a>
       </p>
     </div>
 
@@ -54,7 +54,7 @@ const footerNavLabel = locale === 'zh' ? '导航' : 'Navigation';
       <h3>{footerNavLabel}</h3>
       <ul>
         {navItems.map((item) => (
-          <li><a href={item.href}>{item.label}</a></li>
+          <li><a href={item.href} data-cy-event={item.event} data-cy-location={item.location}>{item.label}</a></li>
         ))}
       </ul>
     </div>

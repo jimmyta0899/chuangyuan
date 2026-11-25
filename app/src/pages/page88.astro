@@ -1,0 +1,23 @@
+---
+// Legacy websiteonline URL: /page88 (News). The new site has no news section.
+export const prerender = true;
+const target = '/zh/';
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <title>页面已迁移 | CHUANG YUAN</title>
+  <link rel="canonical" href={`https://www.chuangyuancorp.com${target}`} />
+  <meta http-equiv="refresh" content={`0; url=${target}`} />
+  <script is:inline define:vars={{ target }}>
+    window.location.replace(target);
+  </script>
+</head>
+<body>
+  <p>此页面已迁移至 <a href={target}>中文首页</a>。</p>
+</body>
+</html>
