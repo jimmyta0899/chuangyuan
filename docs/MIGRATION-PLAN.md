@@ -44,6 +44,15 @@
 
 **默认选 A**：生成桩页，与 silk 项目旧 slug 处理一致（旧 URL 200 + noindex + meta refresh + canonical 指新址）。
 
+**已执行（2026-11-25）**：旧站已下线，完整 URL 清单抓不到；按本节已记录的 5 个路径建桩页（`app/src/pages/page86.astro` … `page93.astro`），统一 200 + noindex + `meta refresh` + canonical：
+- `/page86/` → `/zh/about/`（关于我们）
+- `/page87/` → `/zh/brands/`（产品中心；`?product_id=N` 由同一桩页接住）
+- `/page88/` → `/zh/`（新闻，新站无对应栏目）
+- `/page89/` → `/zh/contact/`（联系我们）
+- `/page93/` → `/zh/`（招聘，新站无对应栏目）
+
+`astro.config.mjs` 的 sitemap filter 排除这 5 条，sitemap 仍只有 8 条正式 URL。旧站为中文站，故统一跳中文页。
+
 ## 5. 切换后验证（当天）
 
 - [ ] `curl -sI https://www.chuangyuancorp.com/` → HTTP 200，`Location`/canonical 正确。

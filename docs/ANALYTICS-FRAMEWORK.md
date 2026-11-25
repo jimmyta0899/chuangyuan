@@ -9,7 +9,12 @@
 框架要求（builder/实现者照此留位）：
 - GA4 脚本通过环境变量注入，如 `NEXT_PUBLIC_GA_ID`，放在 `.env.local`（**不进 git**）。
 - 组件 `Analytics.tsx` 挂载在根 layout，仅在 ID 存在时加载 `gtag`。
-- 事件埋点框架：预留 `contact_cta_click`、`language_switch`、`brand_card_click`、`form_submit` 四类事件的调用位（函数签名先写好，暂不发真实请求或发到占位 ID）。
+- **事件埋点已接入（2026-11-25）**：`app/src/layouts/Layout.astro` 有一个事件委托脚本，读取元素上的 `data-cy-event` + `data-cy-location` / `data-cy-locale` / `data-cy-brand`，把 `{event, ...detail}` push 进 `window.dataLayer`，由 Google tag 容器转给 GA4。四类事件：
+  - `language_switch`（`data-cy-locale`）：页头 `中文` / `EN`。
+  - `contact_cta_click`（`data-cy-location`）：header-nav、header-cta、mobile-nav、hero-cta、footer-nav、footer-email。
+  - `brand_card_click`（`data-cy-brand`）：品牌墙 8 张卡片，key 见 `BrandGrid.astro`。
+  - `form_submit`（`data-cy-location`）：联系表单 submit，用 submit 事件而非 click，避免重复计数。
+  - 表单本身仍是 `action="#"` 的静态占位，没有后端收件；事件上报与收件是两回事。
 - **判据提醒**（来自 QA-REPORT）：Next 16 `next/script` 会把脚本塞进 RSC payload，HTML 里 grep 不到 GA 不代表断了；判断是否采集只看 GA4 API 按日数据，不看 HTML grep。
 
 接入步骤（用户给 ID 后）：

@@ -39,7 +39,16 @@ const addr = {
     )}
 
     <div class="contact-form-wrap">
-      <form action="#" method="POST" aria-label="Contact form" class="contact-form" data-cy-event="form_submit" data-cy-location={showInfo ? 'contact-page' : 'inline-form'}>
+      <form
+        action="mailto:Lucy@chuangyuancorp.com"
+        method="post"
+        enctype="text/plain"
+        aria-label="Contact form"
+        class="contact-form"
+        data-cy-event="form_submit"
+        data-cy-location={showInfo ? 'contact-page' : 'inline-form'}
+        data-locale={locale}
+      >
         <div class="form-group">
           <label for="name">{formLabels[locale].name}</label>
           <input type="text" id="name" name="name" required />
@@ -61,6 +70,42 @@ const addr = {
     </div>
   </div>
 </section>
+
+<script>
+  // Open the visitor's mail client with the message pre-filled to the single
+  // public inbox. The GA4 form_submit event is pushed by Layout's delegated
+  // submit listener, so don't push it again here.
+  function buildMailto(form: HTMLFormElement): string {
+    const field = (name: string): string => {
+      const el = form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | null;
+      return el ? el.value.trim() : '';
+    };
+    const name = field('name');
+    const email = field('email');
+    const company = field('company');
+    const message = field('message');
+    const zh = form.dataset.locale === 'zh';
+    const subject = zh
+      ? `网站留言 - ${name}`
+      : `Website inquiry - ${name}`;
+    const lines = [
+      `${zh ? '姓名' : 'Name'}: ${name}`,
+      `${zh ? '电子邮件' : 'Email'}: ${email}`,
+      `${zh ? '公司名称' : 'Company'}: ${company || '-'}`,
+      '',
+      `${zh ? '留言' : 'Message'}:`,
+      message,
+    ];
+    return `mailto:Lucy@chuangyuancorp.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+  }
+
+  document.querySelectorAll<HTMLFormElement>('form.contact-form').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      window.location.href = buildMailto(form);
+    });
+  });
+</script>
 
 <style>
   :global(.contact-section) {
